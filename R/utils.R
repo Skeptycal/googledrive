@@ -114,3 +114,28 @@ is_true <- function(x) vapply(x, isTRUE, logical(1))
 expose <- function() structure(list(), class = "expose")
 
 is_expose <- function(x) inherits(x, "expose")
+
+## partition a parameter list into two parts, using names to identify
+## components destined for the second part
+## example input:
+# partition_params(
+#   list(a = "a", b = "b", c = "c", d = "d"),
+#   c("b", "c")
+# )
+## example output:
+# list(
+#   unmatched = list(a = "a", d = "d"),
+#   matched = list(b = "b", c = "c")
+# )
+partition_params <- function(input, nms_to_match) {
+  out <- list(
+    unmatched = input,
+    matched = list()
+  )
+  if (length(nms_to_match) && length(input)) {
+    m <- names(out$unmatched) %in% nms_to_match
+    out$matched <- out$unmatched[m]
+    out$unmatched <- out$unmatched[!m]
+  }
+  out
+}

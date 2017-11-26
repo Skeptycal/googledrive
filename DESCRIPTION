@@ -32,7 +32,7 @@ Suggests: covr,
   testthat
 URL: http://googledrive.tidyverse.org, https://github.com/tidyverse/googledrive
 Remotes:
-  r-lib/gargle
+  r-lib/gargle@req-resp-infra
 BugReports: https://github.com/tidyverse/googledrive/issues
 VignetteBuilder: knitr
 RoxygenNote: 6.0.1.9000
